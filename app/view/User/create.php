@@ -5,7 +5,7 @@
     <input type="date" name="birthday" placeholder="date">
     <input type="text" name="country" placeholder="Nhập địa chỉ">
     <button type="submit">ADD NEW USER</button>
-    <a href="index.php?page=User-list">
+    <a href="index.php?page=user-list">
         <button type="button">Back</button>
     </a>
 </form>

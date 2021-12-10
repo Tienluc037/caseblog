@@ -6,5 +6,5 @@
     }
     ?>
 </p>
-<a href="#">Logout</a>
+<a href="index.php?page=">Logout</a>
 <hr>

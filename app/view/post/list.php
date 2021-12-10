@@ -1,4 +1,4 @@
-<a href="index.php?page=post-list">Back</a>
+<a href="index.php?page=user-list">Back</a>
 <table class="table table-striped table table-bordered table table-hover ">
     <tr>
         <th>id</th>

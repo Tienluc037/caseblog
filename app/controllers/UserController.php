@@ -35,9 +35,9 @@ class UserController
     {
         if (isset($_REQUEST['id'])) {
             $this->UsersModel->deleteId($_REQUEST['id']);
-            header("location:index.php");
+            header("location:index.php?page=user-list");
         } else {
-            header("location:index.php");
+            header("location:index.php?user-list");
         }
     }
 
