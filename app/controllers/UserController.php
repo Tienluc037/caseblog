@@ -56,5 +56,4 @@ class UserController
             header("location:index.php?page=user-list");
         }
     }
-
 }
