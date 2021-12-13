@@ -57,6 +57,11 @@ switch ($page) {
             $postController->update();
         }
         break;
+
+    case "post-detail":
+        $postController->detailPost();
+        break;
+
     case "login":
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $authController->showFormLogin();

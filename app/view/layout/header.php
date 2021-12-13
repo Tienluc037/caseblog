@@ -1,6 +1,8 @@
 <?php
 if (isset($_SESSION["user"])) {
     $user = $_SESSION["user"];
+}else{
+    header("location:index.php?page=login");
 }
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark"">
@@ -24,7 +26,7 @@ if (isset($_SESSION["user"])) {
                 <?php echo $user['name'];?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="index.php?page=login">Logout</a>
+                <a class="dropdown-item" href="index.php?page=logout">Logout</a>
                 <a class="dropdown-item" href="#">Setting</a>
                 <div class="dropdown-divider"></div>
             </div>
