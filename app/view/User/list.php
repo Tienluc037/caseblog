@@ -1,11 +1,9 @@
 <?php
 include_once "app/view/layout/header.php";
 ?>
-<a href="index.php?page=user-list">Users</a> <br>
-<a href="index.php?page=user-create">ADD NEW USER</a> <br>
-<a href="index.php?page=post-list">Posts</a> <br>
-<a href="index.php?page=post-add">ADD NEW P0ST</a>
+
 <h2 align="center">THÔNG TIN NGƯỜI DÙNG</h2>
+
 <table class="table table-striped table table-bordered table table-hover ">
     <tr>
         <th>ID</th>
@@ -34,3 +32,5 @@ include_once "app/view/layout/header.php";
         </tr>
     <?php endif; ?>
 </table>
+
+

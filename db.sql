@@ -19,3 +19,5 @@ create table posts (
                        created_at timestamp default current_timestamp,
                        foreign key (user_id) references users(id) on delete cascade
 );
+
+alter table users add column image varchar(255);

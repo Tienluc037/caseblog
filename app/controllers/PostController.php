@@ -1,4 +1,5 @@
 <?php
+
 include_once "app/models/PostModel.php";
 
 class PostController
@@ -15,6 +16,13 @@ class PostController
         $posts = $this->PostModel->getAll();
         include_once "app/view/post/list.php";
     }
+
+    public function showByIdUser()
+    {
+     $posts = $this->PostModel->getByIdUser( $_SESSION["user"]["id"]);
+     include_once "app/view/post/list.php";
+    }
+
 
     public function add()
     {

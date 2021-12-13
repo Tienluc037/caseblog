@@ -26,4 +26,12 @@ class PostModel extends BaseModels
         $stmt->bindValue(4, $request["id"]);
         $stmt->execute();
     }
+
+
+    public function getByIdUser($key)
+    {
+        $sql = "select * from $this->table where user_id like '%$key%'";
+        $stmt = $this->DbConnect->query($sql);
+        return $stmt->fetchAll();
+    }
 }

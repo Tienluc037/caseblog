@@ -1,4 +1,5 @@
 <?php
+
 include_once "app/models/UserModel.php";
 
 class AuthController
@@ -26,5 +27,11 @@ class AuthController
         } else {
             header("location:index.php?page=login");
         }
+    }
+
+    public function logOut()
+    {
+        session_destroy();
+        header("location:index.php?page=login");
     }
 }

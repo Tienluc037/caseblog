@@ -16,6 +16,7 @@ class UserController
         include_once "app/view/User/list.php";
     }
 
+
     public function create()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -24,7 +25,7 @@ class UserController
         } else {
             try {
                 $this->UsersModel->save($_REQUEST);
-                header("location:index.php");
+                header("location:index.php?page=user-list");
             } catch (PDOException $exception) {
                 echo($exception->getMessage());
             }
@@ -54,6 +55,15 @@ class UserController
         if (isset($_REQUEST['id'])) {
             $this->UsersModel->update($_REQUEST);
             header("location:index.php?page=user-list");
+        }
+    }
+
+
+    public function search()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            $users = $this->UsersModel->search($_REQUEST['search']);
+            include_once "app/view/User/list.php";
         }
     }
 }
