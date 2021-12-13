@@ -19,9 +19,9 @@ class UserController
 
     public function create()
     {
-        if($_SERVER["REQUEST_METHOD"]=="GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             include_once "app/view/User/create.php";
-        }else{
+        } else {
             if (isset($_FILES["fileUpToLoad"])) {
                 $targetFolder = "upload/";
                 $nameImage = time() . basename($_FILES["fileUpToLoad"]["name"]);
@@ -33,30 +33,15 @@ class UserController
                     echo "upload khong thanh cong";
                 }
             }
-            try{
+            try {
                 $this->UsersModel->save($_REQUEST);
                 header("location:index.php?page=user-list");
-            }catch (PDOException $e){
+            } catch (PDOException $e) {
                 echo $e->getMessage();
             }
 
         }
     }
-
-//    public function create()
-//    {
-//        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-//            include_once "app/view/User/create.php";
-//
-//        } else {
-//            try {
-//                $this->UsersModel->save($_REQUEST);
-//                header("location:index.php?page=user-list");
-//            } catch (PDOException $exception) {
-//                echo($exception->getMessage());
-//            }
-//        }
-//    }
 
     public function delete()
     {
@@ -79,7 +64,7 @@ class UserController
 
     public function update()
     {
-        if(isset($_REQUEST["id"])){
+        if (isset($_REQUEST["id"])) {
             $user = $this->UsersModel->getById($_REQUEST["id"]);
             $_REQUEST["image"] = $user->image;
             if (isset($_FILES["fileUpToLoad"])) {
@@ -97,13 +82,6 @@ class UserController
             header("Location:index.php?page=user-list");
         }
     }
-//    public function update()
-//    {
-//        if (isset($_REQUEST['id'])) {
-//            $this->UsersModel->update($_REQUEST);
-//            header("location:index.php?page=user-list");
-//        }
-//    }
 
 
     public function search()

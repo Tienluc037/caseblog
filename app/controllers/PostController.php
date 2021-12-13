@@ -19,16 +19,16 @@ class PostController
 
     public function showByIdUser()
     {
-     $posts = $this->PostModel->getByIdUser( $_SESSION["user"]["id"]);
-     include_once "app/view/post/list.php";
+        $posts = $this->PostModel->getByIdUser($_SESSION["user"]["id"]);
+        include_once "app/view/post/list.php";
     }
 
 
     public function add()
     {
-        if($_SERVER["REQUEST_METHOD"]=="GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             include_once "app/view/post/add.php";
-        }else{
+        } else {
             if (isset($_FILES["fileUpToLoad"])) {
                 $targetFolder = "upload/";
                 $nameImage = time() . basename($_FILES["fileUpToLoad"]["name"]);
@@ -40,28 +40,16 @@ class PostController
                     echo "upload khong thanh cong";
                 }
             }
-            try{
+            try {
                 $this->PostModel->addTable($_REQUEST);
                 header("location:index.php?page=post-list");
-            }catch (PDOException $e){
+            } catch (PDOException $e) {
                 echo $e->getMessage();
             }
 
         }
     }
-//    public function add()
-//    {
-//        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-//            include_once "app/view/post/add.php";
-//        } else {
-//            try {
-//                $this->PostModel->addTable($_REQUEST);
-//                header("location:index.php?page=post-list");
-//            } catch (PDOException $exception) {
-//                echo($exception->getMessage());
-//            }
-//        }
-//    }
+
 
     public function delete()
     {
@@ -81,24 +69,14 @@ class PostController
         }
     }
 
-//    public function update()
-//    {
-//        if (isset($_REQUEST['id'])) {
-//            $this->PostModel->update($_REQUEST);
-//            header("location:index.php?page=post-list");
-//        }
-//    }
-
 
     public function update()
     {
-        if(isset($_REQUEST["id"])){
+        if (isset($_REQUEST["id"])) {
             $post = $this->PostModel->getById($_REQUEST["id"]);
-            var_dump($_REQUEST["image"]);
-            die();
+
             $_REQUEST["image"] = $post->image;
-            var_dump($_REQUEST["image"]);
-            die();
+
             if (isset($_FILES["fileUpToLoad"])) {
                 $targetFolder = "upload/";
                 $nameImage = time() . basename($_FILES["fileUpToLoad"]["name"]);
@@ -114,9 +92,10 @@ class PostController
             header("Location:index.php?page=post-list");
         }
     }
+
     public function detailPost()
     {
-        if (isset($_REQUEST['id'])){
+        if (isset($_REQUEST['id'])) {
             $post = $this->PostModel->getById($_REQUEST['id']);
             include_once "app/view/post/detail.php";
         }
